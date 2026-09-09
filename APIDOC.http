@@ -1,0 +1,29 @@
+#create admin r
+###
+POST http://127.0.0.1:8000/api/admin/register/
+Content-Type: application/json
+
+{
+    "username":"manu",
+    "phone":"9947735743",
+    "email":"manu@gmail.com",
+    "password":"Password@123"
+
+}
+
+#token
+###
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+    "username":"manu",
+    "password":"Password@123"
+}
+# 221cf42ec76b42db471a2663775da22648f4a0f6
+
+#ticket list
+###
+GET http://127.0.0.1:8000/api/ticket/
+Accept: application/json
+Authorization: Token 221cf42ec76b42db471a2663775da22648f4a0f6
