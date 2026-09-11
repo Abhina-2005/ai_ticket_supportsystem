@@ -4,10 +4,10 @@ POST http://127.0.0.1:8000/api/admin/register/
 Content-Type: application/json
 
 {
-    "username":"manu",
+    "username":"admin",
     "phone":"9947735743",
-    "email":"manu@gmail.com",
-    "password":"Password@123"
+    "email":"admin@gmail.com",
+    "password":"admin@123"
 
 }
 
@@ -17,13 +17,86 @@ POST http://127.0.0.1:8000/api/token/
 Content-Type: application/json
 
 {
-    "username":"manu",
+    "username":"druv",
     "password":"Password@123"
 }
-# 221cf42ec76b42db471a2663775da22648f4a0f6
+
+
+#user create
+###
+POST http://127.0.0.1:8000/api/user/register/
+Content-Type: application/json
+
+{
+    "username":"druv",
+    "phone":"9947735742",
+    "email":"druv@gmail.com",
+    "password":"Password@123"
+
+}
+
 
 #ticket list
 ###
 GET http://127.0.0.1:8000/api/ticket/
 Accept: application/json
-Authorization: Token 221cf42ec76b42db471a2663775da22648f4a0f6
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+#create ticket
+###
+POST http://127.0.0.1:8000/api/ticket/
+Content-Type: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+{
+    "title": "login problem",
+    "description": "i am unable to login to my account",
+    "category": "technical",
+    "priority": "medium"
+}
+
+#ticket fetch
+###
+GET http://127.0.0.1:8000/api/ticket/1/
+Accept: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+#create ticket
+###
+PATCH http://127.0.0.1:8000/api/ticket/1/
+Content-Type: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+{
+    "title": "Payment failed",
+    "description": "Payment was deducted but ticket is still pending",
+    "category": "payment",
+    "priority": "high",
+    "status":"in-progress"
+}
+
+#ticket delete
+###
+DELETE  http://127.0.0.1:8000/api/ticket/1/
+Accept: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+#list ticketcomment
+###
+GET http://127.0.0.1:8000/api/1/comments/
+Accept: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+
+#create ticketcomment
+###
+Post http://127.0.0.1:8000/api/1/comments/
+Content-Type: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+{
+    "message":"please check my payment issue"
+}
+
+
+ 

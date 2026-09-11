@@ -18,12 +18,18 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.authtoken.views import ObtainAuthToken
 from ticketassist.views import SignupView
+from ticketassist.views import UserSignUpView
 from ticketassist.views import TicketListCreateView
+from ticketassist.views import TicketRetrieveUpdateDeleteView
+from ticketassist.views import TicketCommentsListCreateView
 
 
 urlpatterns = [
     path('admin/',admin.site.urls),
     path("api/token/",ObtainAuthToken.as_view()),
     path("api/admin/register/",SignupView.as_view()),
+    path("api/user/register",UserSignUpView.as_view()),
     path("api/ticket/",TicketListCreateView.as_view()),
+    path("api/ticket/<int:pk>/",TicketRetrieveUpdateDeleteView.as_view()),
+    path("api/<int:pk>/comments/",TicketCommentsListCreateView.as_view()),
 ]
