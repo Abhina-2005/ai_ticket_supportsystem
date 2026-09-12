@@ -147,3 +147,5 @@ MAILERS = {
 AUTH_USER_MODEL= "ticketassist.User"
 
 REST_FRAMEWORK={"DEFAULT_PAGINATION_CLASS":"rest_framework.pagination.PageNumberPagination","PAGE_SIZE":2,}
+
+GEMINI_API_KEY=os.getenv("GEMINI_API_KEY")

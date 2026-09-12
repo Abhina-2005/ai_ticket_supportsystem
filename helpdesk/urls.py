@@ -22,14 +22,32 @@ from ticketassist.views import UserSignUpView
 from ticketassist.views import TicketListCreateView
 from ticketassist.views import TicketRetrieveUpdateDeleteView
 from ticketassist.views import TicketCommentsListCreateView
+from ticketassist.views import TicketCommentRetrieveUpdateDeleteView
+from ticketassist.views import TicketAssignView
+from ticketassist.views import TicketStatusView
+from ticketassist.views import TicketPriorityView
+from ticketassist.views import ProfileView
+from ticketassist.views import LogoutView
+from ticketassist.views import TicketAIResponseView
+from ticketassist.views import TicketAIAnalysisView
+from ticketassist.views import TicketAIAnalysisRetrieveView
 
 
 urlpatterns = [
     path('admin/',admin.site.urls),
     path("api/token/",ObtainAuthToken.as_view()),
     path("api/admin/register/",SignupView.as_view()),
-    path("api/user/register",UserSignUpView.as_view()),
-    path("api/ticket/",TicketListCreateView.as_view()),
-    path("api/ticket/<int:pk>/",TicketRetrieveUpdateDeleteView.as_view()),
-    path("api/<int:pk>/comments/",TicketCommentsListCreateView.as_view()),
+    path("api/user/register/",UserSignUpView.as_view()),
+    path("api/tickets/",TicketListCreateView.as_view()),
+    path("api/tickets/<int:pk>/",TicketRetrieveUpdateDeleteView.as_view()),
+    path("api/tickets/<int:pk>/comments/",TicketCommentsListCreateView.as_view()),
+    path("api/tickets/<int:ticket_id>/comments/<int:pk>/",TicketCommentRetrieveUpdateDeleteView.as_view()),
+    path("api/ticket/<int:pk>/assign/",TicketAssignView.as_view()),
+    path("api/tickets/<int:pk>/status/",TicketStatusView.as_view()),
+    path("api/tickets/<int:pk>/priority/",TicketPriorityView.as_view()),
+    path("api/profile/",ProfileView.as_view()),
+    path("api/logout/",LogoutView.as_view()),
+    path("api/ticket/<int:pk>/ai-response/",TicketAIResponseView.as_view()),
+    path("api/tickets/<int:pk>/ai-analysis/",TicketAIAnalysisView.as_view()),
+    path("api/tickets/<int:pk>/ai-analysis/retrieve/",TicketAIAnalysisRetrieveView.as_view()),
 ]

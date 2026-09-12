@@ -28,23 +28,23 @@ POST http://127.0.0.1:8000/api/user/register/
 Content-Type: application/json
 
 {
-    "username":"druv",
+    "username":"arav",
     "phone":"9947735742",
-    "email":"druv@gmail.com",
+    "email":"arav@gmail.com",
     "password":"Password@123"
 
 }
 
-
+#4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
 #ticket list
 ###
-GET http://127.0.0.1:8000/api/ticket/
+GET http://127.0.0.1:8000/api/tickets/
 Accept: application/json
-Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+Authorization: Token f7675f8fb723e1761c57dede91882aff7b8fcb4b
 
 #create ticket
 ###
-POST http://127.0.0.1:8000/api/ticket/
+POST http://127.0.0.1:8000/api/tickets/
 Content-Type: application/json
 Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
 
@@ -57,46 +57,129 @@ Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
 
 #ticket fetch
 ###
-GET http://127.0.0.1:8000/api/ticket/1/
+GET http://127.0.0.1:8000/api/tickets/2/
 Accept: application/json
-Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+Authorization: Token 76b4e64d2cd02deba643054c30c35c003b4c9104
 
 #create ticket
 ###
-PATCH http://127.0.0.1:8000/api/ticket/1/
+PATCH http://127.0.0.1:8000/api/tickets/1/
 Content-Type: application/json
-Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+Authorization: Token ba5d826352f4ffb5764fdeeb5426331a4874c40c
 
 {
     "title": "Payment failed",
     "description": "Payment was deducted but ticket is still pending",
     "category": "payment",
     "priority": "high",
-    "status":"in-progress"
+    "status":"resolved"
 }
 
 #ticket delete
 ###
-DELETE  http://127.0.0.1:8000/api/ticket/1/
+DELETE  http://127.0.0.1:8000/api/tickets/1/
 Accept: application/json
 Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
 
 #list ticketcomment
 ###
-GET http://127.0.0.1:8000/api/1/comments/
+GET http://127.0.0.1:8000/api/tickets/1/comments/
 Accept: application/json
-Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+Authorization: Token 76b4e64d2cd02deba643054c30c35c003b4c9104
 
 
 #create ticketcomment
 ###
-Post http://127.0.0.1:8000/api/1/comments/
+Post http://127.0.0.1:8000/api/tickets/1/comments/
 Content-Type: application/json
-Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+Authorization: Token ba5d826352f4ffb5764fdeeb5426331a4874c40c
 
 {
-    "message":"please check my payment issue"
+    "message":"we are checking you issue"
+
+}
+
+#fetch ticketcomment
+###
+GET http://127.0.0.1:8000/api/tickets/1/comments/1/
+Accept: application/json
+Authorization: Token f7675f8fb723e1761c57dede91882aff7b8fcb4b
+
+
+#patch ticketcomment
+###
+patch http://127.0.0.1:8000/api/tickets/1/comments/1/
+Content-Type: application/json
+Authorization: Token ba5d826352f4ffb5764fdeeb5426331a4874c40c
+
+{
+    "message":"payment issue is being checked"
+}
+
+#ticketcomment delete
+###
+DELETE  http://127.0.0.1:8000/api/tickets/1/comments/2/
+Accept: application/json
+Authorization: Token ba5d826352f4ffb5764fdeeb5426331a4874c40c
+
+
+#assign
+###
+PATCH http://127.0.0.1:8000/api/ticket/1/assign/
+Content-Type: application/json
+Authorization: Token 76b4e64d2cd02deba643054c30c35c003b4c9104
+
+{
+    "assigned_to":1
+}
+
+#status update
+###
+PATCH http://127.0.0.1:8000/api/tickets/1/status/
+Content-Type: application/json
+Authorization: Token ba5d826352f4ffb5764fdeeb5426331a4874c40c
+
+{
+    "status":"in-progress"
+}
+
+#priority update
+###
+PATCH http://127.0.0.1:8000/api/tickets/1/priority/
+Content-Type: application/json
+Authorization: Token ba5d826352f4ffb5764fdeeb5426331a4874c40c
+
+{
+    "priority":"urgent"
 }
 
 
- 
+#profile
+###
+GET http://127.0.0.1:8000/api/profile/
+Accept: application/json
+Authorization: Token f7675f8fb723e1761c57dede91882aff7b8fcb4b
+
+#logout
+###
+POST http://127.0.0.1:8000/api/logout/
+Content-Type: application/json
+Authorization: Token f7675f8fb723e1761c57dede91882aff7b8fcb4b
+
+#ai response
+###
+POST http://127.0.0.1:8000/api/ticket/999/ai-response/
+Content-Type: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+#ai analysis
+###
+POST http://127.0.0.1:8000/api/tickets/1/ai-analysis/
+Content-Type: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1
+
+#ai analysis fetch
+###
+GET http://127.0.0.1:8000/api/tickets/1/ai-analysis/retrieve/
+Accept: application/json
+Authorization: Token 4e164d50c407c14f8f30ef529bdd7b3fa6543ee1

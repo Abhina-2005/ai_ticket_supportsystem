@@ -81,7 +81,7 @@ class AIAnalysis(models.Model):
     
     ticket=models.OneToOneField(Ticket,on_delete=models.CASCADE,related_name="ai_analysis")
     summary=models.TextField()
-    suggested_catrgory=models.CharField(max_length=50,choices=SUGGESTED_CATEGORY_CHOICES)
+    suggested_category=models.CharField(max_length=50,choices=SUGGESTED_CATEGORY_CHOICES)
     suggested_priority=models.CharField(max_length=50,choices=SUGGESTED_PRIORITY_CHOICES)
     sentiment=models.CharField(max_length=50,choices=SENTIMENT_CHOICES)
     suggested_response=models.TextField()
